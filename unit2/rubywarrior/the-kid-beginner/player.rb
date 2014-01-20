@@ -12,9 +12,9 @@ class Player
     # hash that holds list of enemies that should be approached
     @meleeEnemies = Hash.new()
     @meleeEnemies = {"Thick Sludge" => true, "Archer" => true, "Captive" => true,}
-    # hash that describes an entity as friendly or not
-    @friendly = Hash.new()
-    @friendly = {"Thick Sludge" => false, "Archer" => false, "Captive" => true, "Wizar" => false}
+    # minimum hp required to beat one of each enemy
+    @minHP = Hash.new()
+    @friendly = {"Thick Sludge" => 13, "Archer" => 5,  "Wizard" => 0}
   end
   
 # notes
@@ -79,9 +79,21 @@ class Player
     else
       return false  
     end
-  
   end  
 
+  # determine if there is a safe path to a captive
+  def safePathToCaptive?(look)
+    s0 = look[0]
+    s1 = look[1]
+    s2 = look[2]
+    if (s0.captive? or s1.captive? or s2.captive?)
+      if (!(s1.enemy? or s2.enemy? or s0.enemy?))
+        return true
+      end
+    else
+      return false  
+    end
+  end  
 
   # look for objects of interest. go left first but prioritize captives
   # stop healing after 2 enemies killed
@@ -101,33 +113,33 @@ class Player
     
     @health = warrior.health
   
-    #puts warrior.look[0].to_s
-    #puts warrior.look[1].to_s
-    #puts warrior.look[2].to_s
-
+    
+    # primary logic block
+    
+    # detect captives
     if (warrior.feel.captive?)
       warrior.rescue!
-    #elsif ((warrior.look[1].to_s == "Thick Sludge"))
-     # puts "WIZARD YONUTOTUHNTOU"
+    elsif (warrior.feel(:backward).captive?)
+      warrior.rescue!(:backward)
+    # if there is a safe path to captives, prioritize that.
+    elsif (safePathToCaptive?(warrior.look(:backward))) 
+      warrior.walk!(:backward)
     elsif ((!@meleeEnemies[warrior.look[0].to_s]) and (!@meleeEnemies[warrior.look[1].to_s]) and ((warrior.look[1].to_s == "Wizard") or warrior.look[2].to_s == "Wizard"))
       warrior.shoot!
     elsif (warrior.feel.enemy?)
     	warrior.attack!
+    # detect enemies behind the player
     elsif (warrior.feel(:backward).enemy?)
       warrior.pivot!
     # approach one or more archers if safe
     elsif (approachArcher?(warrior.health, warrior.look))
-      warrior.walk! 
+      warrior.walk!
+    # rest when appropriate
     elsif (lowHealth and (!beingAttacked) and (!safePathToStairs?(warrior.look)))
     	warrior.rest!
-    elsif (warrior.feel(:backward).captive?)
-      warrior.rescue!(:backward)
+    #elsif (warrior.feel(:backward).captive?)
+    #  warrior.rescue!(:backward)
     else
-      #if (!@reachedBack)
-      #  warrior.walk!(:backward)
-      #  if (warrior.feel(:backward).wall?)
-      #    @reachedBack = true
-      #  end
       if (warrior.feel.wall?) 
         warrior.pivot!
       else
