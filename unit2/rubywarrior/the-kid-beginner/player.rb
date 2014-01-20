@@ -1,23 +1,30 @@
+# I the instance variable @health to help track when i am under attack.
+# I use the class variable @@minimumHealth to keep track of what i should heal up to before figthing
+# I use the Constant CRITICAL_HEALTH to track when to back out of a fight
+# I use the hash @meleeEnemies to dertemine wether to approach something or shoot it
+# I use arrays in my safePathToStairs? and safePathToCaptive? functions. The object
+# passed in is an array of squares called look.
+#
+
 class Player
   
+  # health to heal up to before fighting most enemies
   @@minimumHealth = 16
+  # health where warrior should back up if still under attack
+  CRITICAL_HEALTH = 8
+
 
   def initialize()
-    @health = 0
-    @xOffset = 0
-    @yOffset = 0
-    @captives = 1
-    @reachedBack = false
-    @killedEnemies = 0
+    @health = 0 # used to track weather the warrior is under attack
     # hash that holds list of enemies that should be approached
     @meleeEnemies = Hash.new()
-    @meleeEnemies = {"Thick Sludge" => true, "Archer" => true, "Captive" => true,}
+    @meleeEnemies = {"Thick Sludge" => true, "Archer" => true, "Captive" => true, "Sludge" => true}
     # minimum hp required to beat one of each enemy
     @minHP = Hash.new()
-    @friendly = {"Thick Sludge" => 13, "Archer" => 5,  "Wizard" => 0}
+    @minHP = {"Thick Sludge" => 13, "Archer" => 5,  "Wizard" => 0}
   end
   
-# notes
+
 
 # need 13 hp to survive thick sludge
 
@@ -36,10 +43,7 @@ class Player
     return false
   end
 
-  def gatherInfo()
-    #warrior.look
-    #puts warrior.look
-  end
+ 
 
   # determines if it is safe to approach an archer
   def approachArcher?(health, look)
@@ -58,8 +62,7 @@ class Player
         return false
       end
     elsif (a1 and a2)
-      puts "-----------------------------------------"
-      if (health > 16)
+      if (health > 16) # more health is needed to safely approach 2 archers
         return true
       else
         return false
@@ -95,21 +98,17 @@ class Player
     end
   end  
 
-  # look for objects of interest. go left first but prioritize captives
-  # stop healing after 2 enemies killed
   
-
-
+  
   def play_turn(warrior)
     # add your code here
-    gatherInfo()
-    #puts warrior.look
+ 
     beingAttacked = beingAttacked?(warrior.health)
     lowHealth = lowHealth?(warrior.health)
     
 
 
-    puts "@health:  #{@health} warhealth: #{warrior.health}"
+    #puts "@health:  #{@health} warhealth: #{warrior.health}"
     
     @health = warrior.health
   
@@ -124,6 +123,7 @@ class Player
     # if there is a safe path to captives, prioritize that.
     elsif (safePathToCaptive?(warrior.look(:backward))) 
       warrior.walk!(:backward)
+    # shoot a ranged enemy if a melee enemy/captive is not closer
     elsif ((!@meleeEnemies[warrior.look[0].to_s]) and (!@meleeEnemies[warrior.look[1].to_s]) and ((warrior.look[1].to_s == "Wizard") or warrior.look[2].to_s == "Wizard"))
       warrior.shoot!
     elsif (warrior.feel.enemy?)
@@ -137,15 +137,15 @@ class Player
     # rest when appropriate
     elsif (lowHealth and (!beingAttacked) and (!safePathToStairs?(warrior.look)))
     	warrior.rest!
-    #elsif (warrior.feel(:backward).captive?)
-    #  warrior.rescue!(:backward)
     else
+      # turn around if a wall is encountered
       if (warrior.feel.wall?) 
         warrior.pivot!
       else
-        if (beingAttacked && (warrior.health < 8))
+        if (beingAttacked && (warrior.health < CRITICAL_HEALTH))
           warrior.walk!(:backward)
         else
+        # when no other conditions are met the warrior walks forward.
     	   warrior.walk!
         end
       end
