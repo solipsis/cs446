@@ -7,14 +7,15 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 require 'test_helper'
+
 class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
     @update = {
-      title:       'Lorem Ipsum',
+      title: 'Lorem Ipsum',
       description: 'Wibbles are fun!',
-      image_url:   'lorem.jpg',
-      price:       19.95
+      image_url: 'lorem.jgp',
+      price: 19.95 
     }
   end
 
@@ -37,8 +38,6 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to product_path(assigns(:product))
   end
 
-  # ...
-
   test "should show product" do
     get :show, id: @product
     assert_response :success
@@ -53,8 +52,6 @@ class ProductsControllerTest < ActionController::TestCase
     patch :update, id: @product, product: @update
     assert_redirected_to product_path(assigns(:product))
   end
-
-  # ...
 
   test "should destroy product" do
     assert_difference('Product.count', -1) do
