@@ -6,9 +6,42 @@
 
 	table tr td {
 		padding: 10px;
-		vertical-align: top;
+		vertical-align: top;	
+
 	}
 
+	table {
+		:hover {
+			background: #66FF33;
+		}		
+	}
+
+	.list_image {
+		width: 100px;
+		height: 120px;
+	}
+
+	.list_description {
+		width: 60%;
+	}
+	
+	.list_line_even {
+		background: #FF3333;
+		color: #CCFFCC;
 
 
+
+		a {
+			color: #CCFFCC;
+		}
+	}
+
+	.list_line_odd {
+		background: #333333;
+		color: #FFFFFF;
+
+		a {
+			color: #FFFFFF;
+		}
+	}
 }
