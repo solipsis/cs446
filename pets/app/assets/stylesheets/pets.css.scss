@@ -11,6 +11,8 @@
 	}
 
 	table {
+		border-collapse: collapse;
+
 		:hover {
 			background: #66FF33;
 		}		
@@ -22,7 +24,17 @@
 	}
 
 	.list_description {
-		width: 60%;
+		width: 80%;
+
+		dl {
+			margin: 0;
+		}
+
+		dt {
+			font-weight: bold;
+			font-size: larger;
+			padding-left: 50px;
+		}
 	}
 	
 	.list_line_even {
@@ -44,4 +56,11 @@
 			color: #FFFFFF;
 		}
 	}
+
+	.list_actions {
+		text-align: right;
+		font-size: x-small;
+		padding-left: 1em;
+	}
+
 }
