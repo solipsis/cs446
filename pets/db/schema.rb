@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203165552) do
+ActiveRecord::Schema.define(version: 20140203174337) do
 
   create_table "pets", force: true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "species"
     t.string   "image_url"
     t.integer  "age"
     t.datetime "created_at"

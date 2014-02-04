@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
+      <th>Species</th>
       <th>Image url</th>
       <th>Age</th>
       <th></th>
@@ -17,7 +17,7 @@
     <% @pets.each do |pet| %>
       <tr>
         <td><%= pet.name %></td>
-        <td><%= pet.type %></td>
+        <td><%= pet.species %></td>
         <td><%= pet.image_url %></td>
         <td><%= pet.age %></td>
         <td><%= link_to 'Show', pet %></td>
