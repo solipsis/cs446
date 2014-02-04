@@ -11,3 +11,9 @@ two:
   species: MyString
   image_url: MyString
   age: 1
+
+misty:
+  name: Misty
+  species: Gerbil
+  age: 4
+  image_url: misty.jgp

@@ -11,7 +11,7 @@ class PetTest < ActiveSupport::TestCase
   end
 
   test "age must be greater than 0" do
-  	pet = Pet.new(name: 'fido', species: 'shark', image_url: 'shark.jpg')
+  	pet = Pet.new(name:'misty', species: 'shark', image_url: 'shark.jpg')
   	pet.age = -1
   	assert pet.invalid?
   	assert_equal ["must be greater than 0"], pet.errors[:age]
@@ -24,4 +24,9 @@ class PetTest < ActiveSupport::TestCase
   	assert pet.valid?
   end
 
+  test "names must be unique" do
+  	pet = Pet.new(name: pets(:misty).name, species: 'gerbil', age: 5, image_url: 'misty.jpg')
+  	assert pet.invalid?
+  	assert_equal ["has already been taken"], pet.errors[:name]
+  end
 end
