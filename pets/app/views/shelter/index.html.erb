@@ -1,0 +1,11 @@
+<h1>Your possible pets</h1>
+<% @pets.each do |pet| %>
+	<div class="entry">
+		<%= image_tag(pet.image_url) %>
+		<h3><%= pet.name %> </h3>
+		<%= pet.species %>
+		<%= pet.age %>
+
+	</div>
+<% end %>
+<p>Find me in app/views/shelter/index.html.erb</p>
