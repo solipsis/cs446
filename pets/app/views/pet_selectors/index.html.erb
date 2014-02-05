@@ -1,4 +1,4 @@
-<h1>Listing pet_selectors</h1>
+<h1>You chose this pet</h1>
 
 <table>
   <thead>
@@ -12,6 +12,8 @@
   <tbody>
     <% @pet_selectors.each do |pet_selector| %>
       <tr>
+        <%= pet_selector.instance_variable_set(:@testParam, 5) %>
+        <td><% pet_selector.instance_variable_get(:@testParam) %></td>
         <td><%= link_to 'Show', pet_selector %></td>
         <td><%= link_to 'Edit', edit_pet_selector_path(pet_selector) %></td>
         <td><%= link_to 'Destroy', pet_selector, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -5,16 +5,19 @@ class PetSelectorsController < ApplicationController
   # GET /pet_selectors.json
   def index
     @pet_selectors = PetSelector.all
+    @testParam = 5
   end
 
   # GET /pet_selectors/1
   # GET /pet_selectors/1.json
   def show
+    
   end
 
   # GET /pet_selectors/new
   def new
     @pet_selector = PetSelector.new
+    @testParam = 3
   end
 
   # GET /pet_selectors/1/edit
@@ -25,7 +28,7 @@ class PetSelectorsController < ApplicationController
   # POST /pet_selectors.json
   def create
     @pet_selector = PetSelector.new(pet_selector_params)
-
+    @testParam = temp
     respond_to do |format|
       if @pet_selector.save
         format.html { redirect_to @pet_selector, notice: 'Pet selector was successfully created.' }
@@ -39,7 +42,8 @@ class PetSelectorsController < ApplicationController
 
   # PATCH/PUT /pet_selectors/1
   # PATCH/PUT /pet_selectors/1.json
-  def update
+  def update()
+    
     respond_to do |format|
       if @pet_selector.update(pet_selector_params)
         format.html { redirect_to @pet_selector, notice: 'Pet selector was successfully updated.' }
