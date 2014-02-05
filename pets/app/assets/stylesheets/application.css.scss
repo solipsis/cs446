@@ -12,13 +12,14 @@
  *= require_tree .
  */
 #banner {
-  background: #9c9;
+  background: #AEF100;
   height: 250px;
   padding: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
-  color: #282;
+  color: #91DAFF;
   text-align: center;
+  border-st
 
   img {
     float: center;
@@ -36,19 +37,20 @@
 
 #columns {
   background: #141;
+  border-radius: 20px;
 
   #main {
     margin-left: 17em;
     padding: 1em;
-    background: white;
+    background: #CCCCCC;
   }
 
   #side {
     float: left;
     padding: 1em 2em;
-    width: 10em;
-    background: #000;
-	
+    width: 13em;
+    background: #666666;
+	  border-radius: 20px;
     ul {
       padding: 0;
       li {

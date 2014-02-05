@@ -11,7 +11,7 @@ class PetSelectorsController < ApplicationController
   # GET /pet_selectors/1
   # GET /pet_selectors/1.json
   def show
-    
+
   end
 
   # GET /pet_selectors/new
@@ -28,7 +28,7 @@ class PetSelectorsController < ApplicationController
   # POST /pet_selectors.json
   def create
     @pet_selector = PetSelector.new(pet_selector_params)
-    @testParam = temp
+    
     respond_to do |format|
       if @pet_selector.save
         format.html { redirect_to @pet_selector, notice: 'Pet selector was successfully created.' }
