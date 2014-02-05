@@ -1,0 +1,25 @@
+<h1>Listing pet_selectors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pet_selectors.each do |pet_selector| %>
+      <tr>
+        <td><%= link_to 'Show', pet_selector %></td>
+        <td><%= link_to 'Edit', edit_pet_selector_path(pet_selector) %></td>
+        <td><%= link_to 'Destroy', pet_selector, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pet selector', new_pet_selector_path %>

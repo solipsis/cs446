@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203174337) do
+ActiveRecord::Schema.define(version: 20140205123811) do
+
+  create_table "agreements", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "line_items", force: true do |t|
+    t.integer  "pet_id"
+    t.integer  "agreement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["agreement_id"], name: "index_line_items_on_agreement_id"
+  add_index "line_items", ["pet_id"], name: "index_line_items_on_pet_id"
+
+  create_table "pet_selectors", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pets", force: true do |t|
     t.string   "name"

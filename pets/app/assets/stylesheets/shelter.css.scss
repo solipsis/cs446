@@ -13,16 +13,19 @@
 
   /* An entry in the store catalog */
   .entry {
+    
     overflow: auto;
     margin-top: 1em;
     border-bottom: 1px dotted #77d;
     min-height: 100px;
 
     img {
+
       width: 80px;
       margin-right: 5px;
       margin-bottom: 5px;
       position: absolute;
+      padding: 10px;
     }
 
     h3 {
@@ -32,6 +35,10 @@
       margin-top: 0;
       margin-bottom: 2px;
       color: #227;
+    }
+
+    h5 {
+      margin-left: 100px;
     }
 
     
