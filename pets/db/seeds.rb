@@ -10,4 +10,4 @@ Pet.create!(name: 'Maya', species: 'Dog', image_url: 'maya.jpg', age: 12)
 
 Pet.create!(name: 'Fargo', species: 'Parakeet', image_url: 'fargo.jpg', age: 9)
 
-Pet.create!(name: 'Bob', species: 'T-Rex', image_url: 'bob.jpg', age:17)
+Pet.create!(name: 'Bob', species: 'T-Rex', image_url: 'bob.png', age:17)
