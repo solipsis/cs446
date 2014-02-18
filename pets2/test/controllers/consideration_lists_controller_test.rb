@@ -41,9 +41,10 @@ class ConsiderationListsControllerTest < ActionController::TestCase
 
   test "should destroy consideration_list" do
     assert_difference('ConsiderationList.count', -1) do
+      session[:consideration_list_id] = @consideration_list.id
       delete :destroy, id: @consideration_list
     end
 
-    assert_redirected_to consideration_lists_path
+    assert_redirected_to shelter_path
   end
 end

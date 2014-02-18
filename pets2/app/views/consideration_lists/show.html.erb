@@ -6,6 +6,7 @@
 		<li><%= item.pet.name %></li>
 	<% end %>
 </ul>
+<%= button_to 'Remove Considerations', @consideration_list, method: :delete, data: { confirm: 'are you sure?'} %>
 
 <%= link_to 'Edit', edit_consideration_list_path(@consideration_list) %> |
 <%= link_to 'Back', consideration_lists_path %>

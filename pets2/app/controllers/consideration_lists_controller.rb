@@ -54,9 +54,10 @@ class ConsiderationListsController < ApplicationController
   # DELETE /consideration_lists/1
   # DELETE /consideration_lists/1.json
   def destroy
-    @consideration_list.destroy
+    @consideration_list.destroy if @consideration_list.id == session[:consideration_list_id]
+
     respond_to do |format|
-      format.html { redirect_to consideration_lists_url }
+      format.html { redirect_to shelter_url }
       format.json { head :no_content }
     end
   end
