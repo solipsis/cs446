@@ -1,0 +1,25 @@
+<h1>Listing consideration_lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consideration_lists.each do |consideration_list| %>
+      <tr>
+        <td><%= link_to 'Show', consideration_list %></td>
+        <td><%= link_to 'Edit', edit_consideration_list_path(consideration_list) %></td>
+        <td><%= link_to 'Destroy', consideration_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consideration list', new_consideration_list_path %>

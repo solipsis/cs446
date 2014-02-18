@@ -1,4 +1,8 @@
 Pets::Application.routes.draw do
+  resources :consideration_items
+
+  resources :consideration_lists
+
   resources :pet_selectors
 
   get "shelter/index"

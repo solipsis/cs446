@@ -5,7 +5,7 @@
 		<h3><%= pet.name %> </h3>
 		<h5>Species: <%= pet.species %></h5>
 		<h5>Age: <%= pet.age %></h5>
-		<%= button_to 'Pick me', pet_selectors_path(pet_id: pet) %>
+		<%= button_to 'Pick me', consideration_items_path(pet_id: pet) %>
 	</div>
 <% end %>
 
