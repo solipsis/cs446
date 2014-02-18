@@ -1,0 +1,39 @@
+<h1>Pet Listing</h1>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td>
+          <%= image_tag(pet.image_url, class: 'list_image') %>
+        </td>
+        <td class="list_description">
+          <dl>
+            <dt>Name: <%= pet.name %></dt>
+            <dt>Species: <%= pet.species %></dt>
+            <dt>Age: <%= pet.age %></dt>
+          </dl>
+          
+        </td>
+        <td class="list_actions">
+          <%= link_to 'Show', pet %><br/>
+          <%= link_to 'Edit', edit_pet_path(pet) %><br/>
+          <%= link_to 'Destroy', pet, method: :delete, data: {confirm: 'Delete you pet?'}%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pet', new_pet_path %>

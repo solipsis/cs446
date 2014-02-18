@@ -1,0 +1,70 @@
+// Place all the styles related to the pets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pets {
+
+	h1 {
+		color: #226;
+		font-size: 85%;
+	}
+	table tr td {
+		padding: 10px;
+		vertical-align: top;	
+
+	}
+
+	table {
+		border-collapse: collapse;
+
+		:hover {
+			background: #66FF33;
+		}		
+	}
+
+	.list_image {
+		width: 100px;
+		height: 120px;
+	}
+
+	.list_description {
+		width: 80%;
+
+		dl {
+			margin: 0;
+		}
+
+		dt {
+			font-weight: bold;
+			font-size: larger;
+			padding-left: 50px;
+		}
+	}
+	
+	.list_line_even {
+		background: #FF3333;
+		color: #CCFFCC;
+
+
+
+		a {
+			color: #CCFFCC;
+		}
+	}
+
+	.list_line_odd {
+		background: #333333;
+		color: #FFFFFF;
+
+		a {
+			color: #FFFFFF;
+		}
+	}
+
+	.list_actions {
+		text-align: right;
+		font-size: x-small;
+		padding-left: 1em;
+	}
+
+}
