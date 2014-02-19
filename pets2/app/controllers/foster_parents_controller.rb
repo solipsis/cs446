@@ -14,6 +14,8 @@ class FosterParentsController < ApplicationController
 
   # GET /foster_parents/new
   def new
+    @dave = params[:pet_id]
+    @tim = "noob"
     @foster_parent = FosterParent.new
   end
 
@@ -24,8 +26,9 @@ class FosterParentsController < ApplicationController
   # POST /foster_parents
   # POST /foster_parents.json
   def create
+    @bob = "yay"
     @foster_parent = FosterParent.new(foster_parent_params)
-
+    @why = "nay"
     respond_to do |format|
       if @foster_parent.save
         format.html { redirect_to @foster_parent, notice: 'Foster parent was successfully created.' }
@@ -69,6 +72,6 @@ class FosterParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def foster_parent_params
-      params.require(:foster_parent).permit(:name, :address, :email)
+      params.require(:foster_parent).permit(:name, :address, :email, :pet_id)
     end
 end
