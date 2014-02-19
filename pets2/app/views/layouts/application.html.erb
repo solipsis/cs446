@@ -16,7 +16,9 @@
 
       <div id="consideration_list">
         <% if @consideration_list %>
+          <%= hidden_div_if(@consideration_list.consideration_items.empty?, id: 'cart') do %>
           <%= render @consideration_list %>
+          <% end %>
         <% end %>
       </div>
 
