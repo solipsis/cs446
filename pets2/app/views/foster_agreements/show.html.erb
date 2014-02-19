@@ -1,9 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Pet:</strong>
-  <%= @foster_agreement.pet %>
+  <strong>Name:</strong>
+  <%= @foster_agreement.pet.name %>
 </p>
 
-<%= link_to 'Edit', edit_foster_agreement_path(@foster_agreement) %> |
-<%= link_to 'Back', foster_agreements_path %>
+<p>
+
+  <strong>Species:</strong>
+  <%= @foster_agreement.pet.species %>
+</p>
+
+<p>
+	
+  <%= image_tag(@foster_agreement.pet.image_url) %>
+
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @foster_agreement.pet.age %>
+</p>
+
+<p>By clicking agree you agree to provide a good home for this animal</p>
+<p>button_to 'Agree', foster_agreements_path(pet_id: pet) </p>
+<%= link_to 'Cancel', shelter_path %>
+

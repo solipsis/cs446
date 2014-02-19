@@ -24,6 +24,10 @@ class FosterAgreementsController < ApplicationController
   # POST /foster_agreements
   # POST /foster_agreements.json
   def create
+    if (@foster_agreement) 
+      destroy
+    end
+    
     @foster_agreement = FosterAgreement.new(foster_agreement_params)
 
     respond_to do |format|
@@ -56,7 +60,7 @@ class FosterAgreementsController < ApplicationController
   def destroy
     @foster_agreement.destroy
     respond_to do |format|
-      format.html { redirect_to foster_agreements_url }
+      format.html { redirect_to shelter_path }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,7 @@ class FosterAgreementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def foster_agreement_params
-      params.require(:foster_agreement).permit(:pet_id)
+      #params.require(:foster_agreement).permit(:pet_id)
+      p = {pet_id: params[:pet_id]}
     end
 end
