@@ -13,8 +13,11 @@
     </div>
   <div id="columns">
     <div id="side">
+
       <div id="consideration_list">
-        <%= render @consideration_list %>
+        <% if @consideration_list %>
+          <%= render @consideration_list %>
+        <% end %>
       </div>
 
       <ul>

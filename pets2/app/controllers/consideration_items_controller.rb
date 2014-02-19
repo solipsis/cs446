@@ -33,7 +33,8 @@ class ConsiderationItemsController < ApplicationController
 
     respond_to do |format|
       if @consideration_item.save
-        format.html { redirect_to @consideration_item.consideration_list, notice: 'Consideration item was successfully created.' }
+        format.html { redirect_to shelter_url, notice: 'Consideration item was successfully created.' }
+        format.js
         format.json { render action: 'show', status: :created, location: @consideration_item }
       else
         format.html { render action: 'new' }
