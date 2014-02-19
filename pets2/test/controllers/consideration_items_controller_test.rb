@@ -21,7 +21,7 @@ class ConsiderationItemsControllerTest < ActionController::TestCase
       post :create, pet_id: pets(:misty).id
     end
 
-    assert_redirected_to consideration_list_path(assigns(:consideration_item).consideration_list)
+    assert_redirected_to shelter_path(assigns(:consideration_item).consideration_list)
   end
 
   test "should show consideration_item" do
