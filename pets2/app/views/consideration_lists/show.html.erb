@@ -1,12 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Pets you are considering</h2>
-<ul>
-	<% @consideration_list.consideration_items.each do |item| %>
-		<li><%= item.pet.name %></li>
-	<% end %>
-</ul>
-<%= button_to 'Remove Considerations', @consideration_list, method: :delete, data: { confirm: 'are you sure?'} %>
+<table>
+<%= render(@consideration_list.consideration_items) %>
+</table>
 
-<%= link_to 'Edit', edit_consideration_list_path(@consideration_list) %> |
-<%= link_to 'Back', consideration_lists_path %>

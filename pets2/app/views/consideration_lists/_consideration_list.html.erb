@@ -1,0 +1,7 @@
+<h2>Pets You are Considering</h2>
+<table>
+	<%= render(consideration_list.consideration_items) %>
+
+</table>
+
+<%= button_to 'Remove Considerations', consideration_list, method: :delete, data: {confirm: 'are you sure?'} %>
