@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "ready page:change", ->
-  $('.shelter .entry > img').click ->
+  $('.shelter .entry .entry2> img').click ->
     $(this).parent().find(':submit').click()
