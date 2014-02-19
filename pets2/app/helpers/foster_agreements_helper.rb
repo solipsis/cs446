@@ -1,0 +1,2 @@
+module FosterAgreementsHelper
+end

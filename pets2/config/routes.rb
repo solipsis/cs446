@@ -1,4 +1,6 @@
 Pets::Application.routes.draw do
+  resources :foster_agreements
+
   resources :foster_parents
 
   resources :consideration_items

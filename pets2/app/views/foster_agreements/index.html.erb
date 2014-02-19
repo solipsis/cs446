@@ -1,0 +1,27 @@
+<h1>Listing foster_agreements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pet</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foster_agreements.each do |foster_agreement| %>
+      <tr>
+        <td><%= foster_agreement.pet %></td>
+        <td><%= link_to 'Show', foster_agreement %></td>
+        <td><%= link_to 'Edit', edit_foster_agreement_path(foster_agreement) %></td>
+        <td><%= link_to 'Destroy', foster_agreement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Foster agreement', new_foster_agreement_path %>

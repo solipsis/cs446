@@ -5,15 +5,18 @@ one:
   species: MyString
   image_url: MyString
   age: 1
+  status: 'available'
 
 two:
   name: MyString
   species: MyString
   image_url: MyString
   age: 1
+  status: 'available'
 
 misty:
   name: Misty
   species: Gerbil
   age: 4
   image_url: misty.jgp
+  status: 'available'
