@@ -1,3 +1,7 @@
+<% if consideration_item == @current_item %>
+<tr id="current_item">
+<% else %>
 <tr>
+<% end %>
 	<td><%= consideration_item.pet.name %> - <%= consideration_item.pet.species %></td>
 </tr>
