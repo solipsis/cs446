@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
+<% if @foster_agreement.pet %>
 <p>
   <strong>Name:</strong>
   <%= @foster_agreement.pet.name %>
@@ -23,7 +23,9 @@
   <%= @foster_agreement.pet.age %>
 </p>
 
+<% end %>
+
 <p>By clicking agree you agree to provide a good home for this animal</p>
 <p>button_to 'Agree', foster_agreements_path(pet_id: pet) </p>
 <%= link_to 'Cancel', shelter_path %>
-
+<%= button_to "Agree", new_foster_parent_path, method: :get %>

@@ -27,7 +27,6 @@ class FosterAgreementsController < ApplicationController
     if (@foster_agreement) 
       destroy
     end
-    
     @foster_agreement = FosterAgreement.new(foster_agreement_params)
 
     respond_to do |format|
@@ -60,7 +59,7 @@ class FosterAgreementsController < ApplicationController
   def destroy
     @foster_agreement.destroy
     respond_to do |format|
-      format.html { redirect_to shelter_path }
+      format.html { redirect_to foster_agreements_path }
       format.json { head :no_content }
     end
   end

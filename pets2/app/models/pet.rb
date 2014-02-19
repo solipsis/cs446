@@ -1,5 +1,6 @@
 class Pet < ActiveRecord::Base
 	has_many :consideration_items
+	belongs_to :foster_parent
 	STATUS = ["available", "fostered"]
 
 	
