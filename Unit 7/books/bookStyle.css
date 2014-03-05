@@ -1,0 +1,16 @@
+h1 {
+	color: blue;
+}
+
+footer {
+	color: green;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, td {
+	border: 1px solid black;
+	padding: 5px;
+}
