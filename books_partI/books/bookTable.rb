@@ -2,6 +2,7 @@
 
 require 'rack'
 require 'csv'
+require 'ERB'
 
 class BookTable
 	
@@ -41,42 +42,47 @@ class BookTable
 
 
 	def render_form(response)
-		response.write('<form name="input" action="http://localhost:8080/list" method="get">')
-		response.write('<select name="sort">')
-		response.write('<option value="title">Title</option>')
-		response.write('<option value="author">Author</option>')
-		response.write('<option value="language">Language</option>')
-		response.write('<option value="year">Year</option>')
-		response.write('</select>')
-		response.write('<input type="submit" value="display list">')
-		response.write('</form>')
+		response.write(ERB.new(File.read("form.html.erb")).result(binding))
+		#puts ERB.new(File.read("form.html.erb")).result(binding)
+		#ERB.new(File.read("form.html.erb")).result(binding)
+		#response(ERB.new(File.read("form.html.erb")).result(binding))
+		# response.write('<form name="input" action="http://localhost:8080/list" method="get">')
+		# response.write('<select name="sort">')
+		# response.write('<option value="title">Title</option>')
+		# response.write('<option value="author">Author</option>')
+		# response.write('<option value="language">Language</option>')
+		# response.write('<option value="year">Year</option>')
+		# response.write('</select>')
+		# response.write('<input type="submit" value="display list">')
+		# response.write('</form>')
 	end
 
 	# draws the html table with the book info
 	def drawTable(response, request)
-		sortBy = request.GET["sort"]
-		@books = @books.sort_by { |x| x[:"#{sortBy}"]}
+		response.write(ERB.new(File.read("list.html.erb")).result(binding))
+		# sortBy = request.GET["sort"]
+		# @books = @books.sort_by { |x| x[:"#{sortBy}"]}
 
-		response.write("<table>")
-		response.write("<tr>")
-		response.write("<td>Rank</td>")
-		response.write("<td>Title</td>")
-		response.write("<td>Author</td>")
-		response.write("<td>Language</td>")
-		response.write("<td>Year</td>")
-		response.write("<td>Copies</td>")
-		response.write("</tr>")
-		@books.each do |book|
-			response.write("<tr>")
-			response.write("<td>#{book[:rank]}</td>")
-			response.write("<td>#{book[:title]}</td>")
-			response.write("<td>#{book[:author]}</td>")
-			response.write("<td>#{book[:language]}</td>")
-			response.write("<td>#{book[:year]}</td>")
-			response.write("<td>#{book[:copies]}</td>")
-			response.write("</tr>")
-		end
-		response.write("</table>")
+		# response.write("<table>")
+		# response.write("<tr>")
+		# response.write("<td>Rank</td>")
+		# response.write("<td>Title</td>")
+		# response.write("<td>Author</td>")
+		# response.write("<td>Language</td>")
+		# response.write("<td>Year</td>")
+		# response.write("<td>Copies</td>")
+		# response.write("</tr>")
+		# @books.each do |book|
+		# 	response.write("<tr>")
+		# 	response.write("<td>#{book[:rank]}</td>")
+		# 	response.write("<td>#{book[:title]}</td>")
+		# 	response.write("<td>#{book[:author]}</td>")
+		# 	response.write("<td>#{book[:language]}</td>")
+		# 	response.write("<td>#{book[:year]}</td>")
+		# 	response.write("<td>#{book[:copies]}</td>")
+		# 	response.write("</tr>")
+		# end
+		# response.write("</table>")
 	end
 
 
