@@ -1,5 +1,6 @@
 <% sortBy = request.GET["sort"] %>
-<% @books = @books.sort_by { |x| x[:"#{sortBy}"]} %>
+<% @db = SQLite3::Database.new("books.sqlite3.db")	%>
+<% @books = @db.execute( "SELECT * FROM books ORDER BY #{sortBy} ASC") %>
 
 <table>
 	<tr>
@@ -12,12 +13,12 @@
 	</tr>
 <% @books.each do |book| %>
 	<tr>
-		<td><%= book[:rank] %></td>
-		<td><%= book[:title] %></td>
-		<td><%= book[:author] %></td>
-		<td><%= book[:language] %></td>
-		<td><%= book[:year] %></td>
-		<td><%= book[:copies] %></td>
+		<td><%= book[0] %></td>
+		<td><%= book[1] %></td>
+		<td><%= book[2] %></td>
+		<td><%= book[3] %></td>
+		<td><%= book[4] %></td>
+		<td><%= book[5] %></td>	
 	</tr>
 <% end %>
 </table>
